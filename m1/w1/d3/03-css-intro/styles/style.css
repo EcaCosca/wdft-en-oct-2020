@@ -1,0 +1,59 @@
+
+@import "reset.css";
+
+
+/* @import url("") */
+
+/* Applies style to all of the elements */
+/*  { 
+  color: black;
+  font-style: italic;
+} */
+
+body { /* Applies style only to the body element */
+  background-color: salmon;
+  width: 100vw;
+}
+
+div {
+  background-color: aqua;
+  width: 80%;
+}
+
+p {
+  color: white;
+}
+
+
+.paragraph {
+  font-size: 16px;
+}
+
+#link {
+  padding: 10px 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+
+#menu > li {
+  padding: 20px;
+  width: 100px;
+  border: 1px solid black;
+}
+
+#menu2 em {
+  color: white;
+}
+
+
+
+#middle + li {
+  background: white;
+}
+
+
+p, h3 {
+  color: purple;
+  font-weight: 900;
+}
