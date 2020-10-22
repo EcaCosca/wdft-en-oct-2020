@@ -20,8 +20,6 @@
 Common device widths (Generalized - not a set standard)
 
 
-
-
 XS - 360px w
 
 SM - 480px w
@@ -33,8 +31,6 @@ LG - 1024px w
 XL - 1440px w
 
 4K - 2560px w
-
-
 
 
 */
