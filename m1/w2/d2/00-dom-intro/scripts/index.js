@@ -9,6 +9,13 @@ console.dir(document);             // shows all properties that `document` objec
 // ACCESSING HTML ELEMENTS
 // Getting DOM elements and saving their reference for later use (for adding style, content, interactivity)
 
+// Summary:
+// getElementById - returns one element
+// getElementsByClassName and getElementsByTagName - return HTMLCollection (must be converted to array)
+//
+// * querySelector - returns one element (we select it with CSS syntax)
+// * querySelectorAll - returns an iterable/loopable list of elements (we selecti it with CSS syntax)
+
 
 // 1. Getting one element by it's 'id'
 const firstDiv = document.getElementById("first");
@@ -63,7 +70,7 @@ const divsHTMLCollection = document.getElementsByTagName('div');
 // Convert HTMLCollection to regular array
 const divsArray = [ ...divsHTMLCollection ];
 
-console.log('divsArray', divsArray)
+// console.log('divsArray', divsArray)
 
 divsArray.forEach( function(el) {
   el.style.background = 'red';
@@ -71,4 +78,87 @@ divsArray.forEach( function(el) {
 
 
 
-//
+// 4. Get the first found element by CSS selector - select only one element
+
+const firstClassDiv = document.querySelector('.third');
+
+
+const headline = document.querySelector('body h1');
+
+// const headline = document.querySelector('#title');
+// const headline = document.querySelector('h1');
+
+
+// console.log('headline', headline);
+
+
+
+// 5. Get all of the elements by CSS selector - returns a iterable list (no need to convert it to an array)
+const allDivs = document.querySelectorAll('#first, #second, .third');
+// const allDivs = document.querySelectorAll('div:nth-child(odd)');
+
+
+// console.log('allDivs', allDivs);
+
+// No need to convert to an array (iterable right away)
+allDivs.forEach(function(el) {
+  // el.style.background = "cornflowerblue";
+})
+
+
+
+// ADDING CONTENT TO HTML ELEMENT
+
+// .innerHTML  - Adds content between element's tags
+
+const divOne = document.querySelector("#first");
+
+// Add text only
+// divOne.innerHTML = "NEW CONTENT";
+
+// Or add html elements by passing HTML-like string
+divOne.innerHTML = `
+  <h2>NEW CONTENT</h2>
+  <p>Hola Mundo</p>
+`;
+
+
+
+// .textContent - used to add text to an element
+const divTwo = document.querySelector("#second");
+
+// console.log('divTwo', divTwo);
+
+divTwo.textContent = "THIS IS DIV No TWO";
+
+// It reads HTML-like string like a regular piece of text 
+divTwo.textContent = "<h1>THIS IS DIV No TWO</h1>";
+
+
+
+
+// ADDING STYLES FROM JS    .style
+
+
+// background-color
+divOne.style.backgroundColor = 'pink';
+divOne.style.border = "4px solid blue";
+divOne.style.marginBottom = "30px";
+divOne.style.paddingTop = "30px";
+
+
+
+// Accessing or changing `class` or `id`
+
+const myDiv = document.querySelector(".third");
+
+// Adding or updating the `class` of an element
+// myDiv.className = myDiv.className + " active";
+myDiv.className += " active";
+
+
+console.log('myDiv', myDiv);
+
+// Adding or updating an `id` of the element
+myDiv.id = "i-am-a-banana";
+

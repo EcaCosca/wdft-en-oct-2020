@@ -4,3 +4,24 @@
   border: 1px solid black;
   height: 100px;
 }
+
+.active {
+  font-size: 30px;
+  color: white;
+}
+
+section {
+  background: pink;
+}
+
+.container {
+  background: magenta;
+}
+
+#last {
+  background: mediumspringgreen;
+}
+
+#last.container {
+  background: mistyrose;
+}
