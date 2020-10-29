@@ -1,0 +1,83 @@
+/*  Transitions  */
+
+.box {
+  background-color: turquoise;
+  width: 100px;
+  height: 100px;
+  transition: all 1s;
+}
+
+.box:hover {
+  background-color: red;
+  width: 400px;
+  height: 300px;
+  transition-property: width, height, background-color;
+  transition-duration: 1s, 1s, 1s;
+  transition-delay: 0.5s;
+  transition-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+
+  /*  transition: transition-property duration timitng-function delay  */
+
+  /* transition: width 4s linear 0.5s, height 2s linear,
+    background-color 0.5s linear; */
+}
+
+/* Animation */
+
+.animated-box {
+  width: 160px;
+  height: 80px;
+  background-color: red;
+  margin: 20px;
+  position: relative;
+
+  animation-duration: 1s;
+  animation-name: moveAround;
+  animation-iteration-count: 4;
+  animation-direction: alternate;
+
+  /* animation: moveAround 1s linear 0s 4 alternate; */
+
+  /* animation: moveAround 3s, boxSlideIn 1s; */
+
+  /* 
+  animation: [animation-name] [animation-duration] [animation-timing-function]
+[animation-delay] [animation-iteration-count] [animation-direction]
+[animation-fill-mode] [animation-play-state];
+  */
+}
+
+/*  Making an animation rule  - @keyframes */
+
+@keyframes boxSlideIn {
+  0% {
+    margin-left: 100%;
+  }
+  100% {
+    /* margin-left: calc(0% + 20px); */
+    margin-left: 20px;
+  }
+}
+
+@keyframes moveAround {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  25% {
+    top: 0;
+    left: 200px;
+  }
+  50% {
+    left: 200px;
+    top: 200px;
+  }
+  75% {
+    left: 0;
+    top: 200px;
+  }
+  100% {
+    top: 0;
+    left: 0;
+  }
+}

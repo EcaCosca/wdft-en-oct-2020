@@ -1,0 +1,70 @@
+/* CSS font-family property: https://www.w3schools.com/csSref/pr_font_font-family.asp */
+
+/* Web Safe fonts: https://www.w3schools.com/cssref/css_websafe_fonts.asp */
+
+/* Google fonts: https://fonts.google.com */
+/* 
+.
+.
+.
+*/
+
+/* @import url('https://fonts.googleapis.com/css2?family=Syne+Tactile&display=swap'); */
+
+
+
+/* Using web safe fonts */
+h1 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Importing font files */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face */
+
+@font-face {
+  font-family: "myCursiveFont";
+  src: url("./../assets/font-charlotte/charlotte.otf") format("opentype"),
+    url("./../assets/font-charlotte/charlotte.ttf") format("truetype");
+}
+
+
+p {
+  font-family: "myCursiveFont", "Arial Narrow", Arial, sans-serif;
+}
+
+
+
+
+
+
+
+
+
+/*  Importing fonts stylesheet @import */
+/* https://fonts.google.com/specimen/Abel?selection.family=Abel */
+
+
+p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
