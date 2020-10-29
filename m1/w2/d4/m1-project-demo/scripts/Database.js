@@ -33,5 +33,3 @@ class Database {
 
 // create an instance (object) of Database
 const db = new Database();
-
-console.log("db", db);

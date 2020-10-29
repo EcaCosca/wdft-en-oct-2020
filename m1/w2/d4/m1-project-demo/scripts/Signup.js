@@ -19,25 +19,71 @@ class Signup {
     const emailInput = event.target;
     const email = emailInput.value;
 
-    // console.log("email", email);
+    validator.validateValidEmail(email);
+    validator.validateUniqueEmail(email);
+
+    this.setErrorMessages();
   };
+
+
+
 
   // handle the password input
   handlePasswordInput = (event) => {
     const passwordInput = event.target;
-    const password = passwordInput.value;
+    const repeatPasswordInput = this.repeatPasswordInput;
 
-    // console.log("password", password);
+    const password = passwordInput.value;
+    const repeatPassword = repeatPasswordInput.value;
+
+    validator.validatePassword(password);
+    validator.validateRepeatPassword(password, repeatPassword);
+
+    this.setErrorMessages();
   };
+
+
 
   // handle the repeat-password input
   // password confirmation
   handleRepeatPasswordInput = (event) => {
-    const repeatPasswordInput = event.target;
+    const passwordInput = event.target;
+    const repeatPasswordInput = this.repeatPasswordInput;
+
+    const password = passwordInput.value;
     const repeatPassword = repeatPasswordInput.value;
 
-    // console.log("repeatPassword", repeatPassword);
+    validator.validatePassword(password);
+    validator.validateRepeatPassword(password, repeatPassword);
+
+    this.setErrorMessages();
   };
+
+
+
+  // used to show messages below the Signup form
+  setErrorMessages = () => {
+
+    // Clear previous messages, so that they don't add up
+    this.errorsWrapper.innerHTML = "";
+
+    const errorsObj = validator.getErrors();
+
+    console.log('errorsObj', errorsObj)
+    
+    // returns an array of objects values (only error strings)
+    const errorStringsArr = Object.values( errorsObj );
+
+    errorStringsArr.forEach( (str) => {
+      const p = document.createElement('p');
+      p.textContent = str;
+
+      this.errorsWrapper.appendChild(p);
+    })
+  }
+
+
+
 
   // handle the sending of the data ( on submit )
   saveData = (event) => {
