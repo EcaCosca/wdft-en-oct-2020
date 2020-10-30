@@ -116,5 +116,3 @@ class Validator {
 }
 
 const validator = new Validator();
-
-console.log("validator", validator);

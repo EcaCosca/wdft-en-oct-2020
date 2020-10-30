@@ -69,7 +69,6 @@ class Signup {
 
     const errorsObj = validator.getErrors();
 
-    console.log('errorsObj', errorsObj)
     
     // returns an array of objects values (only error strings)
     const errorStringsArr = Object.values( errorsObj );
@@ -116,19 +115,17 @@ class Signup {
   addListeners = () => {
     this.emailInput.addEventListener("input", this.handleEmailInput);
     this.passwordInput.addEventListener("input", this.handlePasswordInput);
-    this.repeatPasswordInput.addEventListener(
-      "input",
-      this.handleRepeatPasswordInput
-    );
-
+    this.repeatPasswordInput.addEventListener("input", this.handleRepeatPasswordInput);
     this.buttonInput.addEventListener("click", this.saveData);
-  };
+  }
+
 }
 
-// create an instance of the Signup (object)
+
 const signup = new Signup();
 
-// console.log("signup", signup);
+
 
 // Add event listeners once the page and all the resources are loaded
-window.addEventListener("load", signup.addListeners);
+
+window.addEventListener('load', signup.addListeners )
