@@ -61,6 +61,7 @@ app.get('/test', (req, res, next) => {
   console.log('req.method', req.method);
   console.log('req.headers', req.headers);
 
+  res.send();
 })
 
 
