@@ -4,7 +4,6 @@ const Author = require('./../models/Author.model');
 
 const books = require('./books-mock-data');
 const authors = require('./authors-mock-data');
-const { create } = require('./../models/Book.model');
 
 const DB_NAME = 'library';
 

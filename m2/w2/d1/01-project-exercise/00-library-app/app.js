@@ -3,15 +3,14 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-
 const mongoose = require("mongoose");
 const erv = require("express-react-views");
 
 const booksRouter = require('./routes/booksRouter');
 
+const app = express();
 const DB_NAME = "library";
 
-const app = express();
 
 // DB CONNECTION
 mongoose
@@ -24,7 +23,6 @@ mongoose
     console.log("Connected to DB" + DB_NAME);
   })
   .catch((err) => console.log("Error connecting to DB", err));
-
 
 
 // SET THE VIEW ENGINE
@@ -44,8 +42,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // ROUTES
 app.use('/books', booksRouter);
-
-
 
 
 app.get('/', (req, res, next) => {
