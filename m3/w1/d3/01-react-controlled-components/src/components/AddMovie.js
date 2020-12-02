@@ -30,7 +30,7 @@ class AddMovie extends Component {
 
     // If event is caused by an input of ` type="checkbox" `
     if (type === "checkbox") {
-      value = !this.state[name];
+      value = !this.state[name]; // toggle the boolean value
     }
 
     this.setState({ [name]: value });
