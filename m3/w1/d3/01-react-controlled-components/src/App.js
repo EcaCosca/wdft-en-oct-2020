@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Navbar from "./components/Navbar";
 import './App.css'
 
-import List from "./components/List";
 import MovieList from './components/MovieList';
 
 class App extends Component {

@@ -5,13 +5,13 @@ function Navbar() {
   return (
     <nav id="navbar">
       <ul>
-        <a href="#">
+        <a href="#home">
           <li>Home</li>
         </a>
-        <a href="#">
+        <a href="#contact">
           <li>Contact</li>
         </a>
-        <a href="#">
+        <a href="#about">
           <li>About</li>
         </a>
       </ul>

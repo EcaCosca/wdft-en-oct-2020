@@ -5,7 +5,7 @@ class AddMovie extends Component {
   state = {
     title: "",
     director: "",
-    IMDbRating: undefined,
+    IMDbRating: 0,
     hasOscars: false
   }
   // 1. Control the data saved in the form   2.Update the form on user input 3. Handle submit
@@ -22,6 +22,20 @@ class AddMovie extends Component {
     this.setState( { hasOscars: value } )
   }
 
+  // ADDITIONAL EXAMPLE:
+  // Dynamic method that can be used for both inputs and checkboxes (such as hasOscars input)
+  handleChange = e => {
+    // Each input has a `name` same as the corresponding `state` field name.
+    let { name, value, type } = e.target;
+
+    // If event is caused by an input of ` type="checkbox" `
+    if (type === "checkbox") {
+      value = !this.state[name];
+    }
+
+    this.setState({ [name]: value });
+  };
+
   handleSubmit = (event) => {
     // prevent the page from reloading
     event.preventDefault();
@@ -30,7 +44,7 @@ class AddMovie extends Component {
     // Save the movie in the array of movies displayed
     this.props.createMovie(newMovie)
     // Clear the form, by setting the state to initial values
-    this.setState( { title: "", director: "", IMDbRating: undefined, hasOscars: false } )
+    this.setState( { title: "", director: "", IMDbRating: 0, hasOscars: false } )
   }
 
   render() {
@@ -50,7 +64,7 @@ class AddMovie extends Component {
           <br/>
 
           <label>Oscar Awarded:</label>
-          <input type="checkbox" name="hasOscars" checked={this.state.hasOscars} onChange={this.handleOscarsCheck}/>
+          <input type="checkbox" name="hasOscars" checked={this.state.hasOscars} onChange={this.handleChange}/>
           <br/>
 
           <button type="submit"> Create A Movie </button>
