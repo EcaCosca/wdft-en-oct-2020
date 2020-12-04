@@ -15,7 +15,7 @@ class ProjectList extends Component {
       this.setState({ listOfProjects: response.data })
     })
     .catch( (err) => console.log(err));
-  }
+  }x
 
   componentDidMount() {
     this.getAllProjects()
