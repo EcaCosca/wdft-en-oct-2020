@@ -10,7 +10,7 @@ const Task = require("../models/task.model");
 
 
 
-// GET '/api/projects/:projectId/tasks/:taskId'   => to retrieve a specific task
+// GET '/api/tasks/:id'   => to retrieve a specific task
 router.get('/tasks/:id', (req, res) => {
   
   const { id } = req.params;

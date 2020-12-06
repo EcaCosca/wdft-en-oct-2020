@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import EditProject from './../../components/EditProject/EditProject';
+import AddTask from "./../../components/AddTask/AddTask";
 
 
 class ProjectDetails extends Component {
@@ -55,6 +56,28 @@ class ProjectDetails extends Component {
         <button onClick={this.deleteProject}>
           Delete project
         </button>
+
+        <AddTask getUpdatedProject={this.getSingleProject} />  
+
+        { 
+          (this.state.tasks.length === 0) 
+            ? <h2>NO TASKS TO DISPLAY</h2>
+            : this.state.tasks.map((task) => {
+                return(
+                  <Link 
+                    key={task._id}
+                    to={`/projects/${this.state._id}/tasks/${task._id}`}
+                    >
+
+                    <div className="task">
+                      <h2>{ task.title }</h2>
+                    </div>
+
+                  </Link>
+                )
+
+          })
+        }
       </div>
     )
   }
