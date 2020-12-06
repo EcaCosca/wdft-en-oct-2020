@@ -17,7 +17,7 @@ class AddProject extends Component {
       .then( () => {
         // refresh the project list by calling the method 
         // from the `ProjectList` component
-        this.props.getAllProjects();
+        this.props.getData();
         // Reset the form fields
         this.setState({ title: '', description: '' })
       })

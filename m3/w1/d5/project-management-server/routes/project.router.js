@@ -1,6 +1,7 @@
 //      routes/project-routes.js
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
 
 const Project = require('./../models/project.model');
 const Task = require('./../models/task.model');

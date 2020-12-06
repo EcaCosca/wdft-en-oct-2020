@@ -25,7 +25,7 @@ class ProjectList extends Component {
     return (
       <div id="project-list">
 
-        <AddProject getAllProjects={this.getAllProjects} />
+        <AddProject getData={this.getAllProjects} />
 
         <div>
           {this.state.listOfProjects.map( (project) => {
