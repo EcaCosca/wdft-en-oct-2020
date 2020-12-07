@@ -36,7 +36,7 @@ router.post('/signup', isNotLoggedIn, validationLogin, (req, res, next) => {
 
             res
               .status(201) // Created
-              .json(createdUser);
+              .json(createdUser); // res.send()
 
           })
           .catch( (err) => {

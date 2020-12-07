@@ -3,13 +3,13 @@ import axios from 'axios';
 
 const { Consumer, Provider } = React.createContext();
 
+
 class AuthProvider extends React.Component {
   state = {
     isLoggedIn: false,
     isLoading: true,
     user: null
   }
-
 
   componentDidMount () {
     axios.get('http://localhost:5000/auth/me', { withCredentials: true } )
@@ -63,9 +63,10 @@ class AuthProvider extends React.Component {
 
   render() {
     const { isLoggedIn, isLoading, user } = this.state;
+    const { signup, login, logout } = this;
 
     return(
-      <Provider value={{ isLoggedIn, isLoading, user }}  >
+      <Provider value={{ isLoggedIn, isLoading, user, signup, login, logout }}  >
         {this.props.children}
       </Provider>
     )
@@ -73,4 +74,33 @@ class AuthProvider extends React.Component {
 
 }
 
-export { AuthProvider }
+
+// HOC that converts regular component into a Consumer
+const withAuth = (WrappedComponent) => {
+  
+  return class extends React.Component {
+    render() {
+      return(
+        <Consumer>
+          { (value) => {
+            const { isLoggedIn, isLoading, user, signup, login, logout } = value;
+
+            return (<WrappedComponent 
+                      {...this.props}
+                      isLoggedIn={isLoggedIn} 
+                      isLoading={isLoading} 
+                      user={user} 
+                      signup={signup} 
+                      login={login} 
+                      logout={logout}
+                    />)
+
+          } }
+        </Consumer>
+        )
+    }
+}
+}
+
+
+export { AuthProvider, withAuth }
