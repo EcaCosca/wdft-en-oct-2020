@@ -14,7 +14,13 @@ function Higher (WrappedComponent) {
   }
 
   return function (props) {
-    return (<WrappedComponent {...props} color={color} getData={getData} />)
+    return (
+      <WrappedComponent
+        {...props} 
+        color={color} 
+        getData={getData} 
+      />
+    )
   }
 }
 

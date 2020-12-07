@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Higher from './../hoc/Higher';
+import withTheme from './../hoc/withTheme';
+
 
 
 class ArticlePreview extends Component {
@@ -14,9 +16,7 @@ class ArticlePreview extends Component {
     this.setState({ title, description });
   }
 
-
   loadMore = () => {
-    // this.setState({ content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, nihil iste itaque eum fuga autem neque nemo qui inventore voluptas! Delectus dicta aliquam sint a! Aut voluptates laboriosam vitae repellendus." })
     this.props.getData()
       .then( (response) => {
         this.setState( { content: response.data.value } )
@@ -24,10 +24,9 @@ class ArticlePreview extends Component {
       .catch( (err) => console.log(err));
   }
 
-
   render() {
     return (
-      <div className="article-preview" style={{ background: this.props.color }}>
+      <div className="article-preview" style={this.props.style}>
         <h3>{this.state.title ? this.state.title : null}</h3>
         <p>{this.state.description ? this.state.description : null}</p>
 
@@ -50,7 +49,5 @@ export default EnhancedArticlePreview;
 
 
 
+// exports = { ArticlePreview, EnhancedArticlePreview }
 
-
-
-// export default ArticlePreview;

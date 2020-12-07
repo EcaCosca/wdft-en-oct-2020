@@ -1,12 +1,17 @@
 import React from 'react';
-import logo from './../ih-logo.png'
+import logo from './../ih-logo.png';
 
-function Navbar() {
+import withTheme from './../hoc/withTheme';
+
+function Navbar(props) {
+
   return (
-    <nav className="navbar">
+    <nav className="navbar" style={props.style} >
       <img src={logo} alt="ironhack logo" width="50px" />
     </nav>
   )
 }
 
-export default Navbar
+const NavbarDark = withTheme(Navbar, 'dark');
+
+export default NavbarDark;

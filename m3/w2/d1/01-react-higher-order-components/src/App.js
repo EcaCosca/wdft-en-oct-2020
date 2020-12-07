@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import ArticlePreview from './components/ArticlePreview';
+import EnhancedArticlePreview from './components/ArticlePreview';
 import Navbar from './components/Navbar';
 
 
@@ -18,7 +18,12 @@ class App extends React.Component {
       <div className="App">
         <Navbar />
         
-        {this.state.articles.map((article) => <ArticlePreview {...article} />)}
+        {this.state.articles.map((article) => {
+          return (
+            <EnhancedArticlePreview {...article} />
+          )
+        
+        })}
       </div>
     );
   }
