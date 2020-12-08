@@ -1,5 +1,5 @@
 import React from 'react';
-import authService from './../lib/auth-service';
+import axios from 'axios';
 
 const { Consumer, Provider } = React.createContext();
 
@@ -12,31 +12,52 @@ class AuthProvider extends React.Component {
   }
 
   componentDidMount () {
-    authService.me()
-     .then((user) => this.setState({ isLoggedIn: true, user: user, isLoading: false }))
-     .catch((err) => this.setState({ isLoggedIn: false, user: null, isLoading: false }));
+    axios.get('http://localhost:5000/auth/me', { withCredentials: true } )
+      .then( (response) => {
+        const user = response.data;
+        this.setState( { isLoggedIn: true, user: user, isLoading: false } )
+      })
+      .catch( (err) => {
+        this.setState( { isLoggedIn: false, user: null, isLoading: false } )
+      });
   }
 
   signup = (username, password) => {
-    authService.signup( username, password )
-      .then((user) => this.setState({ isLoggedIn: true, user }) )
-      .catch((err) => {
-        this.setState({ isLoggedIn: false, user: null });
-      })
+    axios.post(
+      'http://localhost:5000/auth/signup', 
+      { username, password }, 
+      { withCredentials: true }
+    )
+    .then((response) => {
+      const user = response.data;
+      this.setState({ isLoggedIn: true, user: user });
+    })
+    .catch((err) => {
+      this.setState({ isLoggedIn: false, user: null });
+    })
   }
 
   login = (username, password) => {
-    authService.login( username, password )
-      .then((user) => this.setState({ isLoggedIn: true, user }))
-      .catch((err) => {
-        this.setState({ isLoggedIn: false, user: null });
-      })
+    axios.post(
+      'http://localhost:5000/auth/login', 
+      { username, password }, 
+      { withCredentials: true }
+    )
+    .then((response) => {
+      const user = response.data;
+      this.setState({ isLoggedIn: true, user: user });
+    })
+    .catch((err) => {
+      this.setState({ isLoggedIn: false, user: null });
+    })
   }
 
   logout = () => {
-    authService.logout()
-      .then(() => this.setState({ isLoggedIn: false, user: null }))
-      .catch((err) => console.log(err));
+    axios.get('http://localhost:5000/auth/logout', { withCredentials: true })
+      .then( (data) => {
+        this.setState({ isLoggedIn: false, user: null })
+      })
+      .catch( (err) => console.log(err));
   }
 
 
